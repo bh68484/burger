@@ -1,18 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Eat Da Burger</title>
-    <!--Linking Bootstrap - Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
-        crossorigin="anonymous">
-</head>
-
-<body>
-    <p>Placeholder</p>
-</body>
-
-</html>
+<div class="container">
+    <div class="jumbotron">
+        <h1 class="display-4">Eat Da Burger!</h1>
+        <hr class="my-4">
+        <p>Click down below to devour any burger on the menu or add your own!</p>
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <h2>Burgers Available To Eat!</h2>
+            <ul>
+                {{#each burgers}} {{#unless devoured}} {{> burgers/burger-block sleep=true}} {{/unless}} {{/each}}
+            </ul>
+        </div>
+        <div class="col-sm-6">
+            <h2>Burgers That Have Been Eaten!</h2>
+            <ul>
+                {{#each burgers}} {{#if devoured}}
+                <li>
+                    {{id}}. {{burger_name}}
+                </li>
+                {{/if}} {{/each}}
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-10">
+            <h2>Add a Burger!</h2>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="ca">Add Burger</label>
+                    <input type="text" name="sleepy" class="form-control" id="ca">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
